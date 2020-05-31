@@ -2,6 +2,8 @@ project('bx', 'cpp', version : '1.0.0', license: 'BSD 2-Clause', default_options
 
 includes = ['include/bx']
 
+libplatform = host_machine.system() 
+
 if libplatform == 'darwin'
   includes += 'include/compat/osx'
 endif
