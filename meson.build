@@ -1,6 +1,6 @@
 project('bx', 'cpp', version : '1.0.0', license: 'BSD 2-Clause', default_options : ['cpp_std=c++14'])
 
-includes = ['include/bx']
+includes = ['include', '3rdparty']
 
 libplatform = host_machine.system() 
 
