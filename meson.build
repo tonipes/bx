@@ -4,13 +4,21 @@ includes = ['include', '3rdparty']
 
 libplatform = host_machine.system() 
 
+thread_dep = dependency('threads')
+dl_dep     = meson.get_compiler('c').find_library('dl', required : false)
+
+deps = [
+  thread_dep,
+  dl_dep
+]
+
 if libplatform == 'darwin'
   includes += 'include/compat/osx'
 endif
 
-if libplatform == 'linux'
-  includes += 'include/compat/freebsd'
-endif
+# if libplatform == 'linux'
+#   includes += 'include/compat/freebsd'
+# endif
 
 if libplatform == 'windows'
   includes += 'include/compat/mingw'
@@ -21,7 +29,8 @@ src = ['src/amalgamated.cpp']
 lib = static_library(
   'libbx',
   src,
-  include_directories : includes
+  include_directories : includes,
+  dependencies: deps,
 )
 
 bx_dep = declare_dependency(include_directories : includes, link_with: lib)
