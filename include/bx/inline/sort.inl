@@ -22,7 +22,8 @@ namespace bx
 		uint32_t* keys = _keys;
 		uint32_t* tempKeys = _tempKeys;
 
-		uint32_t histogram[radix_sort_detail::kHistogramSize];
+		uint32_t* histogram = (uint32_t*) malloc(sizeof(uint32_t)*radix_sort_detail::kHistogramSize);
+		// uint32_t histogram[radix_sort_detail::kHistogramSize];
 		uint16_t shift = 0;
 		uint32_t pass = 0;
 		for (; pass < 3; ++pass)
@@ -71,6 +72,7 @@ namespace bx
 		}
 
 done:
+		::free(histogram);
 		if (0 != (pass&1) )
 		{
 			// Odd number of passes needs to do copy to the destination.
@@ -86,7 +88,8 @@ done:
 		Ty* values = _values;
 		Ty* tempValues = _tempValues;
 
-		uint32_t histogram[radix_sort_detail::kHistogramSize];
+		uint32_t* histogram = (uint32_t*) malloc(sizeof(uint32_t)*radix_sort_detail::kHistogramSize);
+		// uint32_t histogram[radix_sort_detail::kHistogramSize];
 		uint16_t shift = 0;
 		uint32_t pass = 0;
 		for (; pass < 3; ++pass)
@@ -140,6 +143,7 @@ done:
 		}
 
 done:
+		::free(histogram);
 		if (0 != (pass&1) )
 		{
 			// Odd number of passes needs to do copy to the destination.
@@ -156,7 +160,8 @@ done:
 		uint64_t* keys = _keys;
 		uint64_t* tempKeys = _tempKeys;
 
-		uint32_t histogram[radix_sort_detail::kHistogramSize];
+		uint32_t* histogram = (uint32_t*) malloc(sizeof(uint32_t)*radix_sort_detail::kHistogramSize);
+		// uint32_t histogram[radix_sort_detail::kHistogramSize];
 		uint16_t shift = 0;
 		uint32_t pass = 0;
 		for (; pass < 6; ++pass)
@@ -205,6 +210,7 @@ done:
 		}
 
 done:
+		::free(histogram);
 		if (0 != (pass&1) )
 		{
 			// Odd number of passes needs to do copy to the destination.
@@ -220,7 +226,8 @@ done:
 		Ty* values = _values;
 		Ty* tempValues = _tempValues;
 
-		uint32_t histogram[radix_sort_detail::kHistogramSize];
+		uint32_t* histogram = (uint32_t*) malloc(sizeof(uint32_t)*radix_sort_detail::kHistogramSize);
+		// uint32_t histogram[radix_sort_detail::kHistogramSize];
 		uint16_t shift = 0;
 		uint32_t pass = 0;
 		for (; pass < 6; ++pass)
@@ -274,6 +281,7 @@ done:
 		}
 
 done:
+		::free(histogram);
 		if (0 != (pass&1) )
 		{
 			// Odd number of passes needs to do copy to the destination.
