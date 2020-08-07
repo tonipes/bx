@@ -41,3 +41,5 @@ lib = static_library(
 )
 
 bx_dep = declare_dependency(include_directories : includes, link_with: lib)
+
+subdir('tools')
